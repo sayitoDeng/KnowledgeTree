@@ -1,0 +1,234 @@
+@import "~normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+@import "~@blueprintjs/core/lib/scss/variables";
+
+body
+{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+  'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.title
+{
+    color:$blue1;
+}
+
+.editorbox
+{
+  height:100vh;
+  overflow-y: hidden;
+
+  display: flex;
+  flex-direction: row;
+  .sidebar
+  {
+    flex:1;
+    min-width:300px;
+    color:white;
+    background-color: black;
+
+    display: flex;
+    flex-direction: column;
+    border-right:1px solid #ccc;
+    .treebox
+    {
+      flex:49;
+      padding:10px;
+      overflow-y: auto;
+    }
+    .toolbar
+    {
+      flex:1;
+      min-height:40px;
+      background-color: #eee;
+      display:flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding-left:10px;
+      padding-right: 10px;
+      .search-input
+      {
+        .bp3-input
+        {
+          width:160px;
+        }
+      }
+      
+    }
+  }
+  .notelist
+  {
+    flex:1;
+    min-width:200px;
+    background-color: #f2f2f2;
+    
+    overflow-y: auto;
+
+    .item
+    {
+      font-size:14px;
+      line-height: 1.5;
+      word-wrap: break-word;
+
+      cursor: pointer;
+      border-bottom: 1px solid #ccc;
+      padding:10px;
+      background-color: white;
+      &:hover
+      {
+        background-color: #eee;
+      }
+      &.active
+      {
+        background-color: black;
+        color:white;
+      }
+    }
+  }
+  .notepage
+  {
+    flex:6;
+
+    display:flex;
+    flex-direction: column;
+    border-left:1px solid #ccc;
+
+    .toolbar
+    {
+      min-height:40px;
+      background-color: #eee;
+      display:flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding-left:10px;
+      padding-right: 10px;
+    }
+
+    .contentbox
+    {
+      flex:49;
+      padding:20px;
+
+      overflow-y: auto;
+      overflow-x: hidden;
+      img
+      {
+        max-width:100%;
+      }
+    
+    }
+  }
+}
+
+span.is-active
+{
+  color:white!important;
+}
+
+
+// ======
+.tree {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #21252B;
+}
+
+.m-node.placeholder {
+  border: 1px dashed #1385e5;
+}
+
+.m-node .inner {
+  color: #9DA5B4;
+  font-size: 16px;
+  font-family: Menlo;
+}
+
+.m-node .node {
+  display: inline-block;
+  width: 100%;
+  padding: 4px 5px;
+}
+
+.m-node .node.is-active {
+  background-color: #31363F;
+}
+  // ======
+.solopage
+{
+  .container
+  {
+    max-width: 600px;
+    margin-left:auto;
+    margin-right:auto; 
+  }
+
+  .logobox
+  {
+    margin-top:50px;
+    margin-bottom:50px;
+    text-align: center;
+    .title
+    {
+      font-size: 32px;
+      color:black;
+    }
+  }
+
+  .formbox
+  {
+    padding:20px;
+  }
+
+  img.logo
+  {
+    max-width: 200px;
+    max-height: 200px;
+  }
+}
+// ====== media query =============
+
+.nav-bar
+{
+  display: none;
+}
+
+@media screen and (max-width: 800px) 
+{
+  .nav-bar
+  {
+    height:50px;
+    position: fixed;
+    width:100%;
+    color:#ccc;
+    background-color: black;
+    display: flex;
+    font-size:20px;
+    > *
+    {
+      flex:1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .left,.right
+    {
+      max-width: 20%;
+    }
+  }
+
+  .editorbox
+  {
+    padding-top:50px;
+  }
+}
+
+// ===========  / media query ======
