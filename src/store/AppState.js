@@ -48,10 +48,10 @@ class AppState
     @action async save_to_node( parent_node_id , title , content, id = 0 )
     {
       let params = {};
-      params.append("parent_node" , parent_node_id );
-      params.append("title" , title );
-      params.append("content" , content );
-      params.append("id" , id );
+      params["parent_node"] = parent_node_id ;
+      params["title"] = title ;
+      params["content"] = content ;
+      params["id"] = id ;
       const {data} = await api.post( APIBASE+'notes/save' , params );
       if( data && this.active_id != 0 ) await this.load_notes( this.active_id );
       if( data && data._id ) this.editing_id = data._id;
@@ -60,7 +60,7 @@ class AppState
     @action async remove_note( node_id )
     {
       let params = {};
-      params.append("id" , node_id);
+      params["id"] = node_id;
       const {data} = await api.post( APIBASE+'notes/remove' , params );
       if( data )
       {
@@ -79,16 +79,16 @@ class AppState
     @action async load_notes( node_id )
     {
       
-      var params = new URLSearchParams();
-      params.append("parent_node" , node_id );
+      let params = {};
+      params["parent_node"] = node_id ;
       const {data} = await api.post( APIBASE+'notes/list' , params );
       this.current_note_list = data;
     }
 
     @action async load_note( node_id )
     {
-      var params = new URLSearchParams();
-      params.append("id" , node_id );
+      let params = {};
+      params["id"] = node_id ;
       const {data} = await api.post( APIBASE+'notes/detail' , params );
       
       if( data && data.content )
@@ -101,7 +101,7 @@ class AppState
     @action async search( text )
     {
       var params = new URLSearchParams();
-      params.append("text" , text );
+      params["text"] = text ;
       
       const {data} = await api.post( APIBASE+'notes/search' , params );
       
@@ -134,8 +134,8 @@ class AppState
     {
       if( !tree ) tree = this.current_tree;
       
-      var params = new URLSearchParams();
-      params.append("tree" , JSON.stringify(tree.children));
+      let params = {};
+      params["tree"] = JSON.stringify(tree.children);
       const {data} = await api.post( APIBASE+'nodes/update' , params );
       if( data ) this.current_tree = data;
     }
