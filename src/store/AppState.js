@@ -3,7 +3,8 @@ import axios from 'axios';
 import { ObjectID } from 'bson';
 import api from '../util/api';
 
-const APIBASE =  'http://localhost:3001/';
+//const APIBASE =  'http://localhost:3001/';
+const APIBASE =  'http://81.70.56.66:3001/';
 
 function remove_tree_node( object , id  )
 {
@@ -16,7 +17,7 @@ function check_data(data){
 }
 class AppState
 {
-    @observable appname = "MARKDOWN"; 
+    @observable appname = "KnowledgeTree"; 
     @observable is_editing = false;
 
     @observable editing_id = 0;
@@ -27,6 +28,7 @@ class AppState
     {
       const token  = window.localStorage.getItem("FTTREE_TOKEN");
       if( token ) api.setToken( token );
+      //else window.location = '/#/login';
     }
     @action save_token(token){
       api.setToken(token);

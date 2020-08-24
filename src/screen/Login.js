@@ -29,7 +29,7 @@ export default class Login extends Component
             <div className="container">
                 <div className="text-center">
                     <div className="logobox">
-                        <div className="title">MARKDOWN</div>    
+                        <div className="title">KnowledgeTree</div>    
                     </div>
                     <div className="formbox">
                     <FormGroup
