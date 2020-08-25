@@ -5,8 +5,6 @@
   "homepage": "./",
   "dependencies": {
     "@blueprintjs/core": "^3.30.1",
-    "react-markdown": "^4.3.1",
-    "react-ui-sortable-tree": "^2.6.15",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -19,10 +17,13 @@
     "react": "^16.13.1",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.13.1",
+    "react-markdown": "^4.3.1",
     "react-mde": "^10.1.0",
     "react-router-dom": "^5.2.0",
     "react-script": "^2.0.5",
     "react-scripts": "3.4.1",
+    "react-ui-sortable-tree": "^2.6.15",
+    "react-ui-sortable-tree-drag": "^2.6.16",
     "turndown": "^6.0.0",
     "turndown-plugin-gfm": "^1.0.2"
   },

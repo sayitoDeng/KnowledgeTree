@@ -9578,6 +9578,16 @@ react-transition-group@^2.9.0:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
+react-ui-sortable-tree-drag@^2.6.16:
+  version "2.6.16"
+  resolved "https://registry.yarnpkg.com/react-ui-sortable-tree-drag/-/react-ui-sortable-tree-drag-2.6.16.tgz#53653f0ebd584fbc80ee1090d1eee474e9977663"
+  integrity sha512-l/xLUeIXtw0arlU8wkvh1LZVy9ViS4KiukNMpiH5p2f2xktsTvT/t5ZMcDSChG7G+6K1ioxhnC0u6iCCf6CuXw==
+  dependencies:
+    classnames "^2.2.5"
+    create-react-class "^15.6.2"
+    js-tree "^1.1.0"
+    prop-types "^15.6.0"
+
 react-ui-sortable-tree@^2.6.15:
   version "2.6.15"
   resolved "https://registry.npm.taobao.org/react-ui-sortable-tree/download/react-ui-sortable-tree-2.6.15.tgz#af50b90471e488b9903e15deb220597e86f3df2f"

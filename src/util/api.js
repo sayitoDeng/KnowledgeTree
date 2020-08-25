@@ -15,7 +15,7 @@ class api
         params.append( "token" , this.token );
 
         const data = await axios.post( url , params );
-       console.log( data.data );
+       
         
         if( data.data && data.data.error && data.data.error  == '-NOTLOGIN-' ) window.location = '#login';
 

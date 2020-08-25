@@ -20,16 +20,18 @@ export default class TreeNode extends Component
     
     // componentDidMount()
     // {
-    //    // 
+    
+       
     // }
-
+    
     // componentDidUpdate(prevProps)
     // {
-    //     if (this.props.data !== prevProps.data) 
-    //     {
-           
-    //     }
+        
     // }
+    componentWillUnmount() {
+        this.setState = ()=>false;
+        
+    }
     async remove()
     {
         if( !window.confirm( "确定要删除节点吗，其下的字节点也会被删除" ) ) return false;
@@ -57,12 +59,14 @@ export default class TreeNode extends Component
     }
 
     renderContextMenu() 
-    {
+    {   
         return (
             <Menu>
                 { this.props.data.module != 'root' && <>
                 <MenuItem icon="text-highlight" onClick={()=>{
-                    this.setState({"modify":true,"text":this.props.data.module});
+                    
+                    this.setState({"modify":true,"text":this.props.data.module},()=>{                        
+                    });
                 }}  text="重命名" />
                 
 
@@ -79,14 +83,15 @@ export default class TreeNode extends Component
     cancel()
     {
         this.setState({"modify":false,"text":""});
+        this.props.changeStatus(true);
     }
 
     async save()
     {
         this.props.data.module = this.state.text;
-        this.setState({"modify":false,"text":""});
-        
+        this.setState({"modify":false,"text":""});     
         await this.props.store.update_tree();
+        this.props.changeStatus(true);
     }
 
     async clicked()
@@ -97,7 +102,7 @@ export default class TreeNode extends Component
     }
     
     render()
-    {
+    {   
         return <div >
         { this.state.modify ? 
             <ControlGroup fill={true} vertical={false}>

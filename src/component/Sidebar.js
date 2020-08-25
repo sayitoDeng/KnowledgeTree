@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { observer , inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
-import Tree from 'react-ui-sortable-tree';
-import 'react-ui-sortable-tree/dist/react-ui-tree.css';
+import Tree from 'react-ui-sortable-tree-drag';
+import 'react-ui-sortable-tree-drag/dist/react-ui-tree.css';
 import TreeNode from '../component/TreeNode';
 import { Button } from '@blueprintjs/core';
 import SearchBar from '../component/SearchBar';
@@ -20,7 +20,7 @@ export default class Sidebar extends Component
         
     }
     
-    state = {"canMoveNode":false};
+    state = {"canDrag":true};
     componentDidMount()
     {
        this.props.store.init_tree();
@@ -28,32 +28,26 @@ export default class Sidebar extends Component
 
     // componentDidUpdate(prevProps)
     // {
-    //     if (this.props.data !== prevProps.data) 
-    //     {
-           
-    //     }
+    //     
     // }
     add()
     {
         this.props.store.tree_add_node();
         this.forceUpdate();
     }
-    updateMoveNodeState(value) {
-         this.setState(value,()=>{
-            console.log(this.state)
-         })
-         
-      }
+    changeDragStatus(status){
+        this.setState({"canDrag":status});
+    }
     render()
-    {
+    {   
         return <div className="sidebar">
             <div className="treebox">
                 <Tree  
-                    canMoveNode={ ()=>this.state}
-                    renderNode={node=><TreeNode onUpdate={()=>this.forceUpdate()} data={node}/>}
+                    renderNode={node=><TreeNode canDrag={this.state.canDrag} changeStatus={(status)=>this.changeDragStatus(status)} onUpdate={()=>this.forceUpdate()} data={node}/>}
                     tree={this.props.store.current_tree}
                     onChange={ tree => this.props.store.update_tree(tree)  } 
-                    
+                    canDrag={this.state.canDrag}
+                   // canDrag={this.props.store.canDrag}
                 />
             </div>
             <div className="toolbar">
