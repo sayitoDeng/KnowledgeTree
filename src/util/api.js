@@ -10,13 +10,10 @@ class api
     }
 
     async post( url , params )
-    {
+    {   
         var params = new URLSearchParams( params );
         params.append( "token" , this.token );
-
-        const data = await axios.post( url , params );
-       
-        
+        const data = await axios.post( url , params );        
         if( data.data && data.data.error && data.data.error  == '-NOTLOGIN-' ) window.location = '#login';
 
         return data;

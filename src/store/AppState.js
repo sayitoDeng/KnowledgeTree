@@ -102,9 +102,8 @@ class AppState
 
     @action async search( text )
     {
-      var params = new URLSearchParams();
+      var params = {};
       params["text"] = text ;
-      
       const {data} = await api.post( APIBASE+'notes/search' , params );
       
       if( data && Array.isArray( data ) )
@@ -120,7 +119,6 @@ class AppState
       const {data} = await api.post( APIBASE+'nodes' );
       if( data ) 
       {
-        console.log( data );
         this.current_tree = data;
       
       }
@@ -154,8 +152,6 @@ class AppState
         created_at:Date.now() 
       } ;
       this.current_tree.children.push(new_node);
-      
-      console.log( JSON.stringify(this.current_tree) );
     }
     
     @observable current_tree = {};
