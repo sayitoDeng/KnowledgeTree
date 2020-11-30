@@ -108,7 +108,11 @@ export default class NotePage extends Component
                               Promise.resolve(<ReactMarkdown source={markdown} />)}
                         />
                     : 
-                    <ReactMarkdown source={this.props.store.current_note_markdown} />
+                    <div className="mde-preview">
+                        <div className='mde-preview-content'>
+                            <ReactMarkdown source={this.props.store.current_note_markdown} />
+                        </div>
+                    </div>
                     }
                     
                 </div>
